@@ -1,5 +1,5 @@
 sap.ui.define(
-    ["sap/ui/core/UIComponent", "sap/ui/Device", "<%=ui5Namespace%>/<%=ui5ProjectName%>/model/models"],
+    ["sap/ui/core/UIComponent", "sap/ui/Device", "<%=ui5Namespace.split(".").join("/")%>/<%=ui5ProjectName%>/model/models"],
     /**
      * @param {typeof sap.ui.core.UIComponent} UIComponent
      * @param {typeof sap.ui.Device} Device

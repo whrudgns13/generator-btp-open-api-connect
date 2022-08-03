@@ -1,11 +1,12 @@
 {
-  "name": "<%= this.appname%>",
+  "name": "<%= rootDir%>",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "initProject" : "npm install && cd approuter && npm install && cd .. && cd srv && npm install",
-    "deploy": "run-s build:ui && cf push",
+    "initProject" : "npm install && cd approuter && npm install && cd .. && cd srv && npm install && cd ..",
+    "deploy": "run-s build:ui && run-s createXSUAAService && cf push",
+    "createXSUAAService" : "cf create-service xsuaa application <%=xsuaaName%> -c security/xs-security.json",
     "build:ui": "run-s  build:uimodule",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:uimodule": "ui5 build --config=web/uimodule/ui5.yaml --clean-dest --dest web/uimodule/dist --include-task=generateManifestBundle"

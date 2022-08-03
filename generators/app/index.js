@@ -2,6 +2,7 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const mkdirp = require('mkdirp');
 
 module.exports = class extends Generator {
   prompting() {
@@ -13,12 +14,17 @@ module.exports = class extends Generator {
 
     const prompts = [
       {
+        name: 'rootDir',
+        message: 'Your root dir name?',
+        default : 'btp_api_connect_template'
+      },
+      {
         name: 'domain',
-        message: 'Your Subaccount domain',
+        message: 'Your Subaccount domain?',
       },
       {
         name: 'region',
-        message: 'Your Subaccount Region',
+        message: 'Your Subaccount Region?',
         default: 'us10'
       },
       {
@@ -59,25 +65,35 @@ module.exports = class extends Generator {
     });
   }
 
+  default() {
+    mkdirp(this.props.rootDir);
+    this.destinationPath(this.props.rootDir);
+  }
+
   writing() {
-    this.fs.copy(this.templatePath('srv'),this.destinationPath('srv'));
-    this.fs.copy(this.templatePath('approuter'),this.destinationPath('approuter'));
+    const rootDir = this.props.rootDir;
+    
+    this.fs.copy(this.templatePath(`srv`),this.destinationPath(`${rootDir}/srv`));
+    this.fs.copy(this.templatePath(`approuter`),this.destinationPath(`${rootDir}/approuter`));
+    
     this.fs.copyTpl(
-      this.templatePath('security'),
-      this.destinationPath('security'),
+      this.templatePath(`security`),
+      this.destinationPath(`${rootDir}/security`),
       {xsuaaName : this.props.xsuaaName}
     );
+
     this.fs.copyTpl(
-      this.templatePath('web'),
-      this.destinationPath('web'),
+      this.templatePath(`web`),
+      this.destinationPath(`${rootDir}/web`),
       {
         ui5ProjectName : this.props.ui5ProjectName,
         ui5Namespace : this.props.ui5Namespace
       }
     );
+
     this.fs.copyTpl(
       this.templatePath('manifest.yaml'),
-      this.destinationPath('manifest.yaml'),
+      this.destinationPath(`${rootDir}/manifest.yaml`),
       {
         domain : this.props.domain,
         region : this.props.region,
@@ -87,9 +103,14 @@ module.exports = class extends Generator {
         approuterName : this.props.approuterName
       },
     );
+
     this.fs.copyTpl(
       this.templatePath('package.json'),
-      this.destinationPath('package.json')
+      this.destinationPath(`${rootDir}/package.json`),
+      {
+        rootDir,
+        xsuaaName : this.props.xsuaaName,
+      }
     );
     
   }

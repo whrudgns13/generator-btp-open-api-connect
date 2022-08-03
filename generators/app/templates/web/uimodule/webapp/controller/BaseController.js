@@ -1,5 +1,5 @@
 sap.ui.define(
-    ["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap/ui/core/UIComponent", "<%=ui5Namespace%>/<%=ui5ProjectName%>/model/formatter"],
+    ["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap/ui/core/UIComponent", "<%=ui5Namespace.split(".").join("/")%>/<%=ui5ProjectName%>/model/formatter"],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      * @param {typeof sap.ui.core.routing.History} History
