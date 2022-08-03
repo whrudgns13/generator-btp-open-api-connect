@@ -16,6 +16,15 @@ Then generate your new project:
 yo btp-open-api-connect
 ```
 
+
+yourProject start:
+
+```bash
+cd <your dir>
+npm run initProject
+npm run deploy
+```
+
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.

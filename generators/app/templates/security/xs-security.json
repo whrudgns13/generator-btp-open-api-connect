@@ -51,14 +51,5 @@
 				"xs_user.write"
 			]
 		}
-    ],
-    "role-collections": [
-        {
-            "name": "ReadRoleCollections",
-            "description": "Role Collection",
-            "role-template-references": [
-                "$XSAPPNAME.viewer"
-            ]
-        }
     ]
 }
