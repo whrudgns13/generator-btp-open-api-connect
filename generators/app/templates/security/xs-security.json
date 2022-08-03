@@ -1,0 +1,64 @@
+{
+    "xsappname": "<%=xsuaaName%>",
+    "tenant-mode": "dedicated",
+    "scopes": [
+        {
+            "name": "$XSAPPNAME.read",
+            "description": "Role to read data"
+        },
+        {
+			"name": "xs_authorization.read",
+			"description": "Read authorization information from UAA"
+		},
+		{
+			"name": "xs_authorization.write",
+			"description": "Write authorization information to UAA"
+		},
+		{
+			"name": "xs_idp.read",
+			"description": "xs_idp.read"
+		},
+		{
+			"name": "xs_idp.write",
+			"description": "xs_idp.write"
+		},
+		{
+			"name": "xs_user.read",
+			"description": "xs_user.read"
+		},
+		{
+			"name": "xs_user.write",
+			"description": "xs_user.write"
+		}
+    ],
+    "role-templates": [
+        {
+            "name": "viewer",
+            "description": "Viewer Role",
+            "scope-references": [
+                "$XSAPPNAME.read"
+            ]
+        },
+        {
+			"name": "admin",
+			"description": "admin",
+			"scope-references": [
+				"xs_authorization.read",
+				"xs_authorization.write",
+				"xs_idp.read",
+				"xs_idp.write",
+				"xs_user.read",
+				"xs_user.write"
+			]
+		}
+    ],
+    "role-collections": [
+        {
+            "name": "ReadRoleCollections",
+            "description": "Role Collection",
+            "role-template-references": [
+                "$XSAPPNAME.viewer"
+            ]
+        }
+    ]
+}

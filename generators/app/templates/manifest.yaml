@@ -1,0 +1,45 @@
+applications:
+#server api call
+  - name: <%= serverNameSpace %>
+    instance: 1
+    path: srv
+    routes:
+      - route: <%= domain %>-<%= serverNameSpace %>.cfapps.<%= region %>.hana.ondemand.com
+    memory: 128M
+    buildpacks:
+      - nodejs_buildpack
+    services: 
+      - <%= xsuaaName %>
+#frontend ui5 app
+  - name: <%= appNameSpace %>
+    path: web/uimodule/dist
+    routes:
+      - route: <%= domain %>-<%= appNameSpace %>.cfapps.us10.hana.ondemand.com
+    memory: 128M
+    buildpack: staticfile_buildpack
+    services: 
+      - <%= xsuaaName %>
+#approuter
+  - name: <%=approuterName%>
+    path: approuter
+    routes:
+      - route : <%= domain %>-<%=approuterName%>.cfapps.us10.hana.ondemand.com
+    memory: 128M
+    buildpacks:
+      - nodejs_buildpack
+    services: 
+      - <%= xsuaaName %>
+    env: 
+      destinations: >
+        [
+          {
+            "name" : "server",
+            "url":"https://<%= domain %>-<%= serverNameSpace %>.cfapps.<%= region %>.hana.ondemand.com",          
+            "forwardAuthToken":true
+          },
+          {
+            "name" : "ui5app",
+            "url":"https://<%= domain %>-<%= appNameSpace %>.cfapps.<%= region %>.hana.ondemand.com"          
+          }
+        ]
+        

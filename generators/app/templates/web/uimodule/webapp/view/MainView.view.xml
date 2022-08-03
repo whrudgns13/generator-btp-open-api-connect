@@ -1,0 +1,55 @@
+<mvc:View controllerName="<%=ui5Namespace%>.<%=ui5ProjectName%>.controller.MainView" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:f="sap.ui.layout.form"
+    displayBlock="true" xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Panel class="sapUiSmallMargin">
+                <content>
+                    <Table headerText="User Count {=${users>/totalResults}}" items="{users>/resources}">
+                        <columns>
+                            <Column>
+                                <Text text="User_ID"/>
+                            </Column>
+                            <Column>
+                                <Text text="User_Name"/>
+                            </Column>
+                            <Column>
+                                <Text text="User_Email"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{users>id}"/>
+                                    <Text text="{users>userName}"/>
+                                    <Text text="{users>emails/0/value}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+            </Panel>
+            <Panel class="sapUiSmallMargin">
+                <content>
+                    <f:SimpleForm>
+                        <f:content>
+                            <Label text="ID"/>
+                            <Text text="{currentUser>/id}"/>
+                            <Label text="userName"/>
+                            <Text text="{currentUser>/name/familyName} {currentUser>/name/givenName}"/>
+                            <Label text="emails"/>
+                            <Text text="{currentUser>/emails/0/value}"/>
+                            <Label text="ID"/>
+                        </f:content>
+                    </f:SimpleForm>
+                    <List headerText="Current User Roles" items="{currentUser>/groups}">
+                        <items>
+                            <ObjectListItem title="{currentUser>value}"></ObjectListItem>
+                        </items>
+                    </List>
+                </content>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>
