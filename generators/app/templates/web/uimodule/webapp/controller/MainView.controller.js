@@ -1,8 +1,5 @@
 sap.ui.define(
-    ["./BaseController"],
-    /**
-     * @param {typeof sap.ui.core.mvc.Controller} Controller
-     */
+    ["./BaseController"],    
     function (Controller) {
         "use strict";
 

@@ -7,7 +7,7 @@
     "node": "14.x.x"
   },
   "scripts": {
-    "start": "node --inspect index.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",

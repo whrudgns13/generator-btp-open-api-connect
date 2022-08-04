@@ -1,40 +1,31 @@
-# generator-btp-open-api-connect [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+# generator-btp-open-api-connect [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]  [![Coverage percentage][coveralls-image]][coveralls-url]
+
+
 > 안녕하세욥
 
+사전에 BTP의 계정과 Nodejs가 필요합니다
+
 ## Installation
-
-First, install [Yeoman](http://yeoman.io) and generator-btp-open-api-connect using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
-
 ```bash
 npm install -g yo
 npm install -g generator-btp-open-api-connect
 ```
 
-Then generate your new project:
+Template 생성
 
 ```bash
 yo btp-open-api-connect
 ```
 
 
-yourProject start:
+프로젝트 초기화, BTP CF에 배포
 
 ```bash
+cf login
 cd <your dir>
 npm run initProject
 npm run deploy
 ```
-
-## Getting To Know Yeoman
-
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
-
-## License
-
-Apache-2.0 © [jokyounghun]()
 
 
 [npm-image]: https://badge.fury.io/js/generator-btp-open-api-connect.svg

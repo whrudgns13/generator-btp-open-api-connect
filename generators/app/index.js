@@ -30,7 +30,7 @@ module.exports = class extends Generator {
       {
         name: 'serverNameSpace',
         message: 'Your Server name?',
-        default: "cyglobal"
+        default: "cy_server"
       },
       {
         name: 'appNameSpace',
@@ -55,7 +55,7 @@ module.exports = class extends Generator {
       {
         name: 'xsuaaName',
         message: 'Your xsuaa sevice name?',
-        default: "Node_security"
+        default: "my_xsuaa_security"
       },
     ];
 
@@ -113,12 +113,5 @@ module.exports = class extends Generator {
       }
     );
     
-  }
-
-  install() {
-    this.installDependencies({
-      npm: false,
-      bower: false
-    });
   }
 };
