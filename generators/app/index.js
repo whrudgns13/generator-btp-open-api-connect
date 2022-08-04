@@ -30,7 +30,7 @@ module.exports = class extends Generator {
       {
         name: 'serverNameSpace',
         message: 'Your Server name?',
-        default: "cy_server"
+        default: "cyServer"
       },
       {
         name: 'appNameSpace',
@@ -50,7 +50,7 @@ module.exports = class extends Generator {
       {
         name: 'approuterName',
         message: 'Your approuter name?',
-        default: "approuter"
+        default: "cyApprouter"
       },
       {
         name: 'xsuaaName',
@@ -61,10 +61,13 @@ module.exports = class extends Generator {
 
     //props로 값이 담겨옴 prompts의 name으로 접근 this.props.name
     return this.prompt(prompts).then(props => {
+      //props.domain = props.domain.replaceAll("_","-");
+      //props.serverNameSpace = props.serverNameSpace.replaceAll("_","-");
+      //props.appNameSpace = props.appNameSpace.replaceAll("_","-");
       this.props = props;
     });
   }
-
+  
   default() {
     mkdirp(this.props.rootDir);
     this.destinationPath(this.props.rootDir);

@@ -3,7 +3,7 @@ applications:
   - name: <%=approuterName%>
     path: .
     routes:
-      - route : <%= domain %>-<%=approuterName%>.cfapps.us10.hana.ondemand.com
+      - route : <%= domain.replaceAll("_","-") %>-<%=approuterName.replaceAll("_","-") %>.cfapps.us10.hana.ondemand.com
     memory: 128M
     buildpacks:
       - nodejs_buildpack
@@ -14,12 +14,12 @@ applications:
         [
           {
             "name" : "server",
-            "url":"https://<%= domain %>-<%= serverNameSpace %>.cfapps.<%= region %>.hana.ondemand.com",          
+            "url":"https://<%= domain.replaceAll("_","-") %>-<%= serverNameSpace.replaceAll("_","-") %>.cfapps.<%= region %>.hana.ondemand.com",          
             "forwardAuthToken":true
           },
           {
             "name" : "ui5app",
-            "url":"https://<%= domain %>-<%= appNameSpace %>.cfapps.<%= region %>.hana.ondemand.com"          
+            "url":"https://<%= domain.replaceAll("_","-") %>-<%= appNameSpace.replaceAll("_","-") %>.cfapps.<%= region %>.hana.ondemand.com"          
           }
         ]
         

@@ -3,7 +3,7 @@ applications:
   - name: <%= serverNameSpace %>
     path: .
     routes:
-      - route: <%= domain %>-<%= serverNameSpace %>.cfapps.<%= region %>.hana.ondemand.com
+      - route: <%= domain.replaceAll("_","-") %>-<%= serverNameSpace.replaceAll("_","-") %>.cfapps.<%= region %>.hana.ondemand.com
     memory: 128M
     buildpacks:
       - nodejs_buildpack
