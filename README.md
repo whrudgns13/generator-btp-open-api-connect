@@ -24,7 +24,7 @@ yo btp-open-api-connect
 cf login
 cd <your dir>
 npm run initProject
-npm run deploy
+npm run deploy_all
 ```
 
 
