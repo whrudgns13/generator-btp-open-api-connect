@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "initProject" : "npm install && cd approuter && npm install && cd .. && cd srv && npm install && cd ..",
-    "deploy": "run-s build:ui && run-s createXSUAAService && cf push",
+    "initProject" : "npm install && npm run createXSUAAService && cd approuter && npm install && cd .. && cd srv && npm install && cd ..",
+    "deploy_web": "run-s build:ui && cd web && cf push",
+    "deploy_server": "cd srv && cf push",
+    "deploy_approuter": "cd approuter && cf push",
+    "deploy_all" : "npm run deploy_web && npm run deploy_server && npm run deploy_approuter",
     "createXSUAAService" : "cf create-service xsuaa application <%=xsuaaName%> -c security/xs-security.json",
     "build:ui": "run-s  build:uimodule",
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -1,0 +1,12 @@
+applications:
+#server api call
+  - name: <%= serverNameSpace %>
+    path: .
+    routes:
+      - route: <%= domain %>-<%= serverNameSpace %>.cfapps.<%= region %>.hana.ondemand.com
+    memory: 128M
+    buildpacks:
+      - nodejs_buildpack
+    services: 
+      - <%= xsuaaName %>
+        

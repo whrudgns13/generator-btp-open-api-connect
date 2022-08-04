@@ -1,0 +1,10 @@
+applications:
+#frontend ui5 app
+  - name: <%= appNameSpace %>
+    path: uimodule/dist
+    routes:
+      - route: <%= domain %>-<%= appNameSpace %>.cfapps.<%= region %>.hana.ondemand.com
+    memory: 128M
+    buildpack: staticfile_buildpack
+    services: 
+      - <%= xsuaaName %>

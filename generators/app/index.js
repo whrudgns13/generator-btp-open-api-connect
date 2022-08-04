@@ -73,8 +73,29 @@ module.exports = class extends Generator {
   writing() {
     const rootDir = this.props.rootDir;
     
-    this.fs.copy(this.templatePath(`srv`),this.destinationPath(`${rootDir}/srv`));
-    this.fs.copy(this.templatePath(`approuter`),this.destinationPath(`${rootDir}/approuter`));
+    this.fs.copyTpl(
+      this.templatePath(`srv`),
+      this.destinationPath(`${rootDir}/srv`),
+      {
+        domain : this.props.domain,
+        region : this.props.region,
+        serverNameSpace : this.props.serverNameSpace,
+        xsuaaName : this.props.xsuaaName
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath(`approuter`),
+      this.destinationPath(`${rootDir}/approuter`),
+      {
+        domain : this.props.domain,
+        region : this.props.region,
+        serverNameSpace : this.props.serverNameSpace,
+        appNameSpace : this.props.appNameSpace,
+        xsuaaName : this.props.xsuaaName,
+        approuterName : this.props.approuterName
+      }
+    );
     
     this.fs.copyTpl(
       this.templatePath(`security`),
@@ -87,22 +108,26 @@ module.exports = class extends Generator {
       this.destinationPath(`${rootDir}/web`),
       {
         ui5ProjectName : this.props.ui5ProjectName,
-        ui5Namespace : this.props.ui5Namespace
+        ui5Namespace : this.props.ui5Namespace,
+        domain : this.props.domain,
+        region : this.props.region,
+        appNameSpace : this.props.appNameSpace,
+        xsuaaName : this.props.xsuaaName
       }
     );
 
-    this.fs.copyTpl(
-      this.templatePath('manifest.yaml'),
-      this.destinationPath(`${rootDir}/manifest.yaml`),
-      {
-        domain : this.props.domain,
-        region : this.props.region,
-        serverNameSpace : this.props.serverNameSpace,
-        appNameSpace : this.props.appNameSpace,
-        xsuaaName : this.props.xsuaaName,
-        approuterName : this.props.approuterName
-      },
-    );
+    // this.fs.copyTpl(
+    //   this.templatePath('manifest.yaml'),
+    //   this.destinationPath(`${rootDir}/manifest.yaml`),
+    //   {
+    //     domain : this.props.domain,
+    //     region : this.props.region,
+    //     serverNameSpace : this.props.serverNameSpace,
+    //     appNameSpace : this.props.appNameSpace,
+    //     xsuaaName : this.props.xsuaaName,
+    //     approuterName : this.props.approuterName
+    //   },
+    // );
 
     this.fs.copyTpl(
       this.templatePath('package.json'),
