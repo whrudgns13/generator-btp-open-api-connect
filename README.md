@@ -11,20 +11,35 @@ npm install -g yo
 npm install -g generator-btp-open-api-connect
 ```
 
-Template 생성
+## Template 생성
 
 ```bash
 yo btp-open-api-connect
 ```
 
 
-프로젝트 초기화, BTP CF에 배포
+## 프로젝트 초기화, BTP CF에 배포
 
 ```bash
 cf login
 cd <your dir>
 npm run initProject
 npm run deploy
+```
+
+
+## 폴더구조
+```bash
+rootDir
+    approuter
+    security
+    srv
+    web
+-------------
+approuter 어플리케이션의 진입점
+security에는 공통적으로 사용할 보안파일 xs-security.json이 들어있습니다
+srv에는 index.js에서 Open API를 사용할 REST API를 정의
+web에는 btp에 등록된 유저, 현재 들어온 유저의 정보와 role을 화면에 보이도록 만들어놨습니다
 ```
 
 

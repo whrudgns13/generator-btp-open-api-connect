@@ -32,7 +32,7 @@
             </Panel>
             <Panel class="sapUiSmallMargin">
                 <content>
-                    <f:SimpleForm>
+                    <f:SimpleForm title="Current User Info">
                         <f:content>
                             <Label text="ID"/>
                             <Text text="{currentUser>/id}"/>
